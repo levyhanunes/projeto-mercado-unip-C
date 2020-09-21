@@ -118,21 +118,77 @@ void listarProduto(){
 }
 
 void comprarProduto(){
-	//
+	if(contador_produto > 0){
+
+	}else{
+		printf("Ainda não existem produtos para vender.\n");
+		Sleep(2);
+		menu();
+	}
 }
 
 void visualizarCarrinho(){
-	//
+	if(contador_carrinho > 0){
+		printf("Produtos do Carrinho\n");
+		printf("--------------------\n");
+		for (int i = 0; i < contador_carrinho; i++){
+			infoProduto(carrinho[i].produto);
+			printf("Quantidade: %d\n	", carrinho[i].quantidade);
+			printf("--------------\n");
+			Sleep(1);
+		}
+	}else{
+		printf("Não existe nenhum produto no carrinho");
+		Sleep(1);
+		menu();
+	}
 }
 
 Produto pegarProdutoPorCodigo(int codigo){
-	//
+	Produto p;
+	for(int i = 0 < 0; i < contador_produto; i++){
+		if(produtos[i].codigo == codigo){
+			p = produtos[i];
+		}
+	}
+	return p;
 }
 
 int * temNoCarrinho(int codigo){
-	//
+	int static retorno[] = {0, 0};
+	for(int i=0; i < contador_carrinho; i++){
+		if(carrinho[i].produto.codigo == codigo){
+			retorno[0] = 1; // tem o produto com este codigo no carrinho
+			retorno[1] = i; // o indice do produto no carrinho
+		}
+	}
+	return retorno;
 }
 
 void fecharPedido(){
-	//
+	if(contador_carrinho > 0){
+		float valorTotal = 0.0;
+		printf("Produtos do Carrinho\n");
+		printf("====================\n");
+		for(int i = 0; i < contador_carrinho; i++){
+			Produto p = carrinho[i].produto;
+			int quantidade = carrinho[i].quantidade;
+			valorTotal += p.preco * quantidade;
+			infoProduto(p);
+			printf("Quantidade: %d\n", quantidade);
+			printf("==============\n");
+			Sleep(1);
+		}
+		printf("Sua fatura é %.2f\n", valorTotal);
+
+		//Limpar carrinho
+		contador_carrinho = 0;
+		printf("Obrigado pela prefência.\n");
+		Sleep(3);
+		menu();
+	}else{
+		printf("Você ainda não possui produtos no carrinho.");
+		Sleep(3);
+		menu();
+	}
 }
