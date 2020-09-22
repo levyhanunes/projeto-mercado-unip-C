@@ -43,7 +43,7 @@ void infoProduto(Produto prod){
 void menu(){
 	printf("=========================================\n");
 	printf("================ Bem-vindo(a) ===========\n");
-	printf("================  Geek Shop   ===========\n");
+	printf("================  Pet  Shop   ===========\n");
 	printf("=========================================\n");
 
 	printf("Selecione uma opção abaixo: \n");
