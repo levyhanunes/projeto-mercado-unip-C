@@ -37,7 +37,7 @@ int main(){
 }
 
 void infoProduto(Produto prod){
-	printf("CÃ³digo: %d \nNome: %s \nPreÃ§o: %.2f\n", prod.codigo, strtok(prod.nome, "\n"), prod.preco);
+	printf("Código: %d \nNome: %s \nPreço: %.2f\n", prod.codigo, strtok(prod.nome, "\n"), prod.preco);
 }
 
 void menu(){
@@ -46,7 +46,7 @@ void menu(){
 	printf("================  Pet  Shop   ===========\n");
 	printf("=========================================\n");
 
-	printf("Selecione uma opÃ§Ã£o abaixo: \n");
+	printf("Selecione uma opção abaixo: \n");
 	printf("1 - Cadastrar produto\n");
 	printf("2 - Listar produtos\n");
 	printf("3 - Comprar produto\n");
@@ -79,7 +79,7 @@ void menu(){
 			sleep(2); //Sleep(2)
 			exit(0);
 		default:
-			printf("OpÃ§Ã£o invÃ¡lida.\n");
+			printf("Opção inválida.\n");
 			sleep(2);
 			menu();
 			break;
@@ -93,7 +93,7 @@ void cadastrarProduto(){
 	printf("Informe o nome do produto: \n");
 	fgets(produtos[contador_produto].nome, 30, stdin);
 
-	printf("Informe o preÃ§o do produto: \n");
+	printf("Informe o preço do produto: \n");
 	scanf("%f", &produtos[contador_produto].preco);
 
 	printf("O produto %s foi cadastrado com sucesso.\n", strtok(produtos[contador_produto].nome, "\n"));
@@ -117,7 +117,7 @@ void listarProdutos(){
 		sleep(2);
 		menu();
 	}else{
-		printf("NÃ£o temos ainda produtos cadastrados.\n");
+		printf("Não temos ainda produtos cadastrados.\n");
 		sleep(2);
 		menu();
 	}
@@ -125,9 +125,9 @@ void listarProdutos(){
 
 void comprarProduto(){
 	if(contador_produto > 0){
-		printf("Informe o cÃ³digo do produto que deseja adicionar ao carrinho.\n");
+		printf("Informe o código do produto que deseja adicionar ao carrinho.\n");
 
-		printf("========== Produtos DisponÃ­veis ===========\n");
+		printf("========== Produtos Disponíveis ===========\n");
 		for(int i = 0; i < contador_produto; i++){
 			infoProduto(produtos[i]);
 			printf("---------------------\n");
@@ -147,7 +147,7 @@ void comprarProduto(){
 
 					if(retorno[0] == 1){
 						carrinho[retorno[1]].quantidade++;
-						printf("Aumentei a quantidade do produto %s jÃ¡ existente no carrinho.\n",
+						printf("Aumentei a quantidade do produto %s já existente no carrinho.\n",
 								strtok(carrinho[retorno[1]].produto.nome, "\n"));
 						sleep(2);
 						menu();
@@ -172,12 +172,12 @@ void comprarProduto(){
 			}
 		}
 		if(tem_mercado < 1){
-			printf("NÃ£o foi encontrado o produto com cÃ³digo %d.\n", codigo);
+			printf("Não foi encontrado o produto com código %d.\n", codigo);
 			sleep(2);
 			menu();
 		}
 	}else{
-		printf("Ainda nÃ£o existem produtos para vender.\n");
+		printf("Ainda não existem produtos para vender.\n");
 		sleep(2);
 		menu();
 	}
@@ -196,7 +196,7 @@ void visualizarCarrinho(){
 		sleep(2);
 		menu();
 	}else{
-		printf("NÃ£o temos ainda produtos no carrinho.\n");
+		printf("Não temos ainda produtos no carrinho.\n");
 		sleep(2);
 		menu();
 	}
@@ -237,15 +237,15 @@ void fecharPedido(){
 			printf("---------------\n");
 			sleep(1);
 		}
-		printf("Sua fatura Ã© R$ %.2f\n", valorTotal);
+		printf("Sua fatura é R$ %.2f\n", valorTotal);
 
 		//limpar carrinho
 		contador_carrinho = 0;
-		printf("Obrigado pela preferÃªncia.\n");
+		printf("Obrigado pela preferência.\n");
 		sleep(5);
 		menu();
 	}else{
-		printf("VocÃª nÃ£o tem nenhum produto no carrinho ainda.\n");
+		printf("Você não tem nenhum produto no carrinho ainda.\n");
 		sleep(3);
 		menu();
 	}
